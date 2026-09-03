@@ -10,5 +10,5 @@ Clinic would be the client object.
 Refer to the UML Class Diagram
 
 ## Class Diagram
-<img width="845" height="493" alt="image" src="https://github.com/user-attachments/assets/6bcd79f1-80cb-494f-afad-ce614a67d4d4" />
+<img width="816" height="446" alt="image" src="https://github.com/user-attachments/assets/cdbc3442-4280-4f6b-b4b3-d240c9b03c6d" />
 
