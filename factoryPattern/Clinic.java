@@ -3,37 +3,57 @@ package factoryPattern;
 import java.util.Scanner;
 
 public class Clinic {
-    public static void main(String[] args){
-
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        int choice;
 
-        System.out.println("[1] Dog");
-        System.out.println("[2] Cat");
-        System.out.print("\nChoose your pet number: ");
-        Integer choice = input.nextInt();
+        do {
+            System.out.println("\n[1] Dog");
+            System.out.println("[2] Cat");
+            System.out.println("[3] Exit");
+            System.out.print("Choose: ");
+            choice = input.nextInt();
 
-        PetRecord petFile = new PetRecord();
-        Pet pet;
+            if (choice == 3) {
+                System.out.println("Goodbye!");
+                break;
+            }
 
-        switch(choice){
-            case 1: pet = new Dog();
+            if (choice != 1 && choice != 2) {
+                System.out.println("Invalid! Try again.");
+                continue;
+            }
+
+            PetRecord petFile = new PetRecord();
+            Pet pet;
+            String extraInfo = "";
+
+            if (choice == 1) {
+                pet = new Dog();
                 petFile.setPetId("D01");
                 petFile.setPetName("Bantay");
-                petFile.setPet(pet);
-                ((Dog) pet).setBreed("German Shepperd");
-                break;
-            case 2: pet = new Cat();
+                ((Dog) pet).setBreed("German Shepherd");
+                extraInfo = "Breed: " + ((Dog) pet).getBreed();
+            } else {
+                pet = new Cat();
                 petFile.setPetId("C01");
                 petFile.setPetName("Muning");
-                petFile.setPet(pet);
                 ((Cat) pet).setNoOfLives(9);
-        }
+                extraInfo = "Lives: " + ((Cat) pet).getNoOfLives();
+            }
 
-        System.out.println("Pet id is " + petFile.getPetId());
-        System.out.println("Pet name is " + petFile.getPetName());
-        System.out.println("Pet kind: " + petFile.getPet().getClass().getSimpleName());
-        System.out.println("Communication sound: "+ petFile.getPet().makeSound());
-        System.out.println("Play mode: " + petFile.getPet().play());
+            petFile.setPet(pet);
 
+            System.out.println("\nPet ID is " + petFile.getPetId());
+            System.out.println("Pet name is " + petFile.getPetName());
+            System.out.println("Pet Kind: " + pet.getClass().getSimpleName());
+            System.out.println(extraInfo);
+            System.out.println("Communication Sound: " + pet.makeSound());
+            System.out.println("Play mode: " + pet.play());
+
+        } while (true);
+
+        input.close();
     }
 }
+
